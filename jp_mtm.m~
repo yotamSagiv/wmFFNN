@@ -1,0 +1,21 @@
+
+for i = 1:40
+    [testMSE_del2, testMSE_del0, avg_mse, weight_corr_pairs, corr_trajectory, mse_log, training_error_logs, pattern_logs, chunk_effect] = chunking_sim_stat_del(num_objects, num_positions, num_del, prop_interleaved)
+
+    if i == 1
+        mse_del0 = testMSE_del0;
+        mse_del2 = testMSE_del2;
+    else
+        mse_del0 = cat(3, mse_del0, testMSE_del0);
+        mse_del2 = cat(3, mse_del2, testMSEP);
+    end
+    disp(i);
+    [testMSE, avg_mse, weight_corr_pairs, corr_trajectory, mse_log, training_error_logs, pattern_logs, chunk_effect] = chunking_sim_stat_del(6, 6, 2, 0.25);
+    %[testMSE, weight_corr_pairs, corr_trajectory] = chunking_sim(num_objects, num_main_positions, num_extra_positions)
+    if i == 1
+        mse_del2 = testMSE;
+    else
+        mse_del2 = cat(3, mse_del2, testMSE);
+    end
+    disp(i);
+end
